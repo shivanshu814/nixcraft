@@ -1,40 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Nix Development Environment
+
+A robust and reproducible development environment setup using Nix for Node.js projects.
+
+## Overview
+
+This repository contains a Nix-based development environment configuration that provides a consistent and isolated development setup for Node.js projects. It ensures that all developers work with the same versions of Node.js, Yarn, and other dependencies.
+
+## Features
+
+- Node.js 20.x
+- Yarn package manager
+- Isolated development environment
+- Reproducible setup across different machines
+- Cross-platform compatibility
+
+## Prerequisites
+
+- [Nix](https://nixos.org/download.html) installed on your system
+- Basic understanding of Nix and Node.js
 
 ## Getting Started
 
-First, run the development server:
+1. Clone this repository
+2. Run the following command to enter the development environment:
+   ```bash
+   nix develop
+   ```
+3. Verify the setup:
+   ```bash
+   node --version
+   yarn --version
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Running the Project
+
+1. First, enter the Nix development environment:
+
+   ```bash
+   nix develop
+   ```
+
+2. Install project dependencies:
+
+   ```bash
+   yarn install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   yarn dev
+   ```
+
+4. For production build:
+
+   ```bash
+   yarn build
+   yarn start
+   ```
+
+5. To run tests:
+   ```bash
+   yarn test
+   ```
+
+Note: Make sure you're always in the Nix development environment (after running `nix develop`) before executing any of these commands.
+
+## Project Structure
+
+```
+.
+├── flake.nix          # Nix configuration file
+└── README.md          # This file
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Nix vs npmrc: A Comparison
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Nix Approach
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+#### Advantages
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- Reproducible environments across all machines
+- System-wide dependency management
+- Isolated development environments
+- Cross-platform consistency
+- Version control friendly
+- Clean environment for each project
+- Manages system-level dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Use Cases
 
-## Learn More
+- Team development
+- Complex projects with multiple dependencies
+- Projects requiring specific system configurations
+- Cross-platform development
+- Projects needing isolation
 
-To learn more about Next.js, take a look at the following resources:
+### npmrc Approach
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+#### Advantages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Simpler setup
+- Familiar to Node.js developers
+- Lightweight configuration
+- Easy to modify
 
-## Deploy on Vercel
+#### Use Cases
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Simple Node.js projects
+- Personal projects
+- Projects with minimal dependencies
+- When only npm-specific configurations are needed
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+### When to Use Which?
+
+#### Use Nix when:
+
+- Working in a team
+- Need reproducible environments
+- Project has complex dependencies
+- Require system-level package management
+- Need isolation between projects
+
+#### Use npmrc when:
+
+- Working on simple projects
+- Only need npm-specific configurations
+- Don't require system-level package management
+- Working alone on a project
+- Need quick setup
+
+## Contributing
+
+Feel free to submit issues and enhancement requests.
+
+## License
+
+This project is licensed under the MIT License.
